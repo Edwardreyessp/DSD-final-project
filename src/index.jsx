@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Alumno from "./Alumno";
+import AddStudent from "./AddStudent";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,14 @@ const router = createBrowserRouter([
   {
     path: "/student",
     element: <Alumno />,
+  },
+  {
+    path: "/student/add",
+    element: <AddStudent />,
+  },
+  {
+    path: "*",
+    element: <h1>404</h1>,
   },
 ]);
 

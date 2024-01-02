@@ -4,8 +4,27 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 
 function App() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
+
+  const validatePassword = () => {
+    // Debe contener al menos una mayúscula, una minúscula, un número y un carácter especial
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
+    if (regex.test(password)) {
+      console.log("Contraseña válida");
+      setIsPasswordValid(true);
+    } else {
+      console.log("Contraseña inválida");
+      setIsPasswordValid(false);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -19,9 +38,29 @@ function App() {
       }}
     >
       <Typography variant="h1">Iniciar Sesión</Typography>
-      <TextField label="Usuario" />
-      <TextField label="Contraseña" />
-      <Button variant="contained">Iniciar Sesión</Button>
+      <Box width={550} display="flex" flexDirection={"column"} gap="1rem">
+        <TextField
+          fullWidth
+          label="Usuario"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <TextField
+          fullWidth
+          label="Contraseña"
+          error={!isPasswordValid}
+          helperText={
+            !isPasswordValid
+              ? "Debe contener al menos una mayúscula, una minúscula, un número y un carácter especial"
+              : ""
+          }
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </Box>
+      <Button variant="contained" onClick={validatePassword}>
+        Iniciar Sesión
+      </Button>
     </Box>
   );
 }

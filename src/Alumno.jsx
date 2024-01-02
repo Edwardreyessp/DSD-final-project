@@ -10,14 +10,21 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import { useRef, useState } from "react";
 
 const Alumno = () => {
+  const [selectedImage, setSelectedImage] = useState(
+    "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"
+  );
+
+  const fileInputRef = useRef(null);
+
   const dataStudent = {
     name: "Edward Daniel Reyes Pérez",
   };
 
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  function createData(name, p1, p2, p3, final) {
+    return { name, p1, p2, p3, final };
   }
 
   const rows = [
@@ -27,6 +34,27 @@ const Alumno = () => {
     createData("Materia 4", 9, 9, 9, 9),
     createData("Materia 5", 9, 9, 9, 9),
   ];
+
+  const handleButtonClick = () => {
+    // Activa el input de tipo file cuando se hace clic en el botón
+    fileInputRef.current.click();
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        // Actualiza el estado con la nueva imagen seleccionada
+        setSelectedImage(e.target.result);
+      };
+
+      // Lee el contenido de la imagen como una URL
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <Box
@@ -41,14 +69,19 @@ const Alumno = () => {
       }}
     >
       <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-        <img
-          src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"
-          alt="alumno"
-          width={200}
-        />
+        <img src={selectedImage} alt="alumno" width={200} />
         <Typography variant="h1">{dataStudent.name}</Typography>
       </Box>
-      <Button variant="contained">Cambiar foto de perfil</Button>
+      <Button variant="contained" onClick={handleButtonClick}>
+        Cambiar foto de perfil
+      </Button>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        style={{ display: "none" }}
+        ref={fileInputRef}
+      />
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
