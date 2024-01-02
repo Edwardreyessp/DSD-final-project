@@ -12,7 +12,10 @@ function App() {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
 
   const validatePassword = () => {
-    // Debe contener al menos una mayúscula, una minúscula, un número y un carácter especial
+    //link to dashboard
+    window.location.href = "/admin";
+
+    /* // Debe contener al menos una mayúscula, una minúscula, un número y un carácter especial
     const regex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
@@ -22,7 +25,7 @@ function App() {
     } else {
       console.log("Contraseña inválida");
       setIsPasswordValid(false);
-    }
+    }*/
   };
 
   return (
