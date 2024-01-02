@@ -15,7 +15,7 @@ const DashboardAdmin = () => {
       <Typography variant="h3" sx={{ mb: 4, fontWeight: "bold" }}>
         Administrador Jose Perez Carmelo
       </Typography>
-      <Link to="/materias" style={{ textDecoration: "none" }}>
+      <Link to="/admin/materias" style={{ textDecoration: "none" }}>
         <Card variant="outlined" sx={{ mb: 2, cursor: "pointer" }}>
           <CardContent>
             <Typography variant="h4" component="div">
@@ -24,7 +24,7 @@ const DashboardAdmin = () => {
           </CardContent>
         </Card>
       </Link>
-      <Link to="/alumnos" style={{ textDecoration: "none" }}>
+      <Link to="/admin/alumnos" style={{ textDecoration: "none" }}>
         <Card variant="outlined" sx={{ mb: 2, cursor: "pointer" }}>
           <CardContent>
             <Typography variant="h4" component="div">
@@ -33,7 +33,7 @@ const DashboardAdmin = () => {
           </CardContent>
         </Card>
       </Link>
-      <Link to="/alta-alumnos" style={{ textDecoration: "none" }}>
+      <Link to="/admin/addStudent" style={{ textDecoration: "none" }}>
         <Card variant="outlined" sx={{ mb: 2, cursor: "pointer" }}>
           <CardContent>
             <Typography variant="h4" component="div">

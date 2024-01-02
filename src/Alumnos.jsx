@@ -12,6 +12,11 @@ function createData(name) {
   return { name };
 }
 
+const handleRowClick = (name) => {
+  // You can perform actions when a row is clicked, e.g., navigate to a different route
+  window.location.href = "/admin/alumnos/asignadas";
+};
+
 const rows = [
   createData("Pedro Ramirez R "),
   createData("Juan Sanchez B"),
@@ -37,6 +42,7 @@ export default function Alumnos() {
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  onClick={() => handleRowClick(row.name)}
                 >
                   <TableCell component="th" scope="row">
                     {row.name}
