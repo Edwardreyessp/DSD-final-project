@@ -16,8 +16,8 @@ const Alumno = () => {
     name: "Edward Daniel Reyes Pérez",
   };
 
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  function createData(name, p1, p2, p3, final) {
+    return { name, p1, p2, p3, final };
   }
 
   const rows = [
